@@ -51,15 +51,15 @@
               email: "garciaejarquel@gmail.com"
             },
             client: {
-              name: "Solfrut",
-              contact: "Sector compras",
+              name: "Productor Agrícola",
+              contact: "Presentación Técnica Comercial",
               address: "",
               email: ""
             },
             details: {
-              title: "OPTIMIZACIÓN DE PODA ESTRUCTURAL – PISTACHO",
+              title: "OPTIMIZACIÓN DE PODA ESTRUCTURAL",
               campaign: "Campaña 2026",
-              quoteNumber: "COT-2026-0042",
+              quoteNumber: "REF-2026",
               date: new Date().toLocaleDateString('es-AR'),
               validity: "Sujeta a stock",
             },
@@ -67,32 +67,15 @@
               {
                 id: 1,
                 name: "Bahco BCL240",
-                description: "Tijera eléctrica. Capacidad de corte hasta 40 mm. Indicada para formación de plantas jóvenes y manejo estructural en árboles adultos.",
-                quantity: 1,
-                unitPrice: 866192.25,
+                description: "Tijera eléctrica. Capacidad de corte hasta 40 mm. Indicada para formación de plantas jóvenes y manejo estructural en árboles adultos."
               },
               {
                 id: 2,
                 name: "Bahco BCL25TP",
-                description: "Pértiga telescópica compatible con BCL240. Permite realizar trabajos en altura sin escalera, mejorando seguridad y eficiencia.",
-                quantity: 1,
-                unitPrice: 432353.25,
+                description: "Pértiga telescópica compatible con BCL240. Permite realizar trabajos en altura sin escalera, mejorando seguridad y eficiencia."
               }
-            ],
-            taxRate: 0.21 
+            ]
           });
-
-          const subtotal = proposalData.products.reduce((acc, item) => acc + (item.quantity * item.unitPrice), 0);
-          const taxes = subtotal * proposalData.taxRate;
-          const total = subtotal + taxes;
-
-          const formatCurrency = (amount) => {
-            return new Intl.NumberFormat('es-AR', {
-              style: 'currency',
-              currency: 'ARS',
-              minimumFractionDigits: 2
-            }).format(amount);
-          };
 
           const handleDownloadPDF = () => {
             window.print();
@@ -131,7 +114,7 @@
                       </div>
                     </div>
                     <div className="text-right">
-                      <h1 className="text-3xl font-light text-emerald-800/40 mb-1 uppercase tracking-widest">Propuesta</h1>
+                      <h1 className="text-3xl font-light text-emerald-800/40 mb-1 uppercase tracking-widest">Propuesta Técnica</h1>
                       <p className="text-sm font-bold text-emerald-900">{proposalData.details.quoteNumber}</p>
                       <p className="text-sm text-gray-600">Fecha: {proposalData.details.date}</p>
                     </div>
@@ -144,16 +127,16 @@
                   </div>
 
                   <div className="mb-8 bg-slate-50 p-6 rounded-lg print:bg-white print:border print:p-4">
-                    <h3 className="text-xs font-bold uppercase text-emerald-600 mb-2 tracking-wider">Preparado para:</h3>
+                    <h3 className="text-xs font-bold uppercase text-emerald-600 mb-2 tracking-wider">Dirigido a:</h3>
                     <p className="text-xl font-bold text-gray-900">{proposalData.client.name}</p>
-                    <p className="text-sm text-gray-700 font-medium mt-1">Atte: {proposalData.client.contact}</p>
+                    <p className="text-sm text-gray-700 font-medium mt-1">{proposalData.client.contact}</p>
                   </div>
 
                   <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
                     <div>
                       <h4 className="font-bold text-emerald-800 uppercase mb-2 border-b border-emerald-100 pb-1">1. Enfoque Estratégico 2026</h4>
                       <p className="text-gray-700 text-justify leading-relaxed mb-4">
-                        En pistacho, la poda es una intervención estructural determinante para la arquitectura del árbol, el equilibrio vegetativo-productivo y la estabilidad futura del monte. 
+                        En frutales, la poda es una intervención estructural determinante para la arquitectura del árbol, el equilibrio vegetativo-productivo y la estabilidad futura del monte. 
                         En línea con el plan 2026, <strong>Agroconsulta</strong> impulsa la incorporación de tecnología eléctrica profesional para mejorar:
                       </p>
                       <ul className="list-disc list-inside space-y-1 text-gray-700 ml-2">
@@ -192,14 +175,11 @@
                   </div>
 
                   <div className="mb-8">
-                    <h4 className="font-bold text-emerald-800 uppercase mb-3 border-b border-emerald-100 pb-1 text-sm">3. Inversión en Equipos (Bahco)</h4>
+                    <h4 className="font-bold text-emerald-800 uppercase mb-3 border-b border-emerald-100 pb-1 text-sm">3. Equipos Propuestos (Bahco)</h4>
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="bg-emerald-50 text-sm uppercase tracking-wider text-emerald-900">
-                          <th className="py-3 px-3 font-bold w-1/2 rounded-tl-md">Equipo / Descripción</th>
-                          <th className="py-3 px-3 font-bold text-center">Cant.</th>
-                          <th className="py-3 px-3 font-bold text-right">Valor Unit.</th>
-                          <th className="py-3 px-3 font-bold text-right rounded-tr-md">Total</th>
+                          <th className="py-3 px-3 font-bold rounded-md">Equipo / Descripción</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-emerald-100">
@@ -209,46 +189,29 @@
                               <p className="font-bold text-gray-900 text-base">{product.name}</p>
                               <p className="text-gray-600 mt-1 leading-relaxed">{product.description}</p>
                             </td>
-                            <td className="py-4 px-3 text-center text-gray-800 font-medium align-top">{product.quantity}</td>
-                            <td className="py-4 px-3 text-right text-gray-800 align-top">{formatCurrency(product.unitPrice)}</td>
-                            <td className="py-4 px-3 text-right font-bold text-emerald-900 align-top">{formatCurrency(product.quantity * product.unitPrice)}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-8 mb-12">
-                    <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 w-full sm:w-1/2 print:border-none print:bg-gray-50">
-                      <h4 className="font-bold text-gray-800 mb-2 uppercase text-xs tracking-wider">Condiciones de Pago</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li><span className="font-semibold text-gray-800">Plazos:</span> 30 – 60 – 90 días.</li>
-                        <li><span className="font-semibold text-gray-800">Medio de pago:</span> Cheques electrónicos (eCheq).</li>
+                  <div className="mb-8">
+                    <h4 className="font-bold text-emerald-800 uppercase mb-3 border-b border-emerald-100 pb-1 text-sm">4. Condiciones Comerciales</h4>
+                    <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 print:border-none print:bg-gray-50">
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li><span className="font-semibold text-gray-900">Medio de pago:</span> Cheque electrónico (eCheq).</li>
+                        <li><span className="font-semibold text-gray-900">Plazos estándar:</span> 30 – 60 – 90 días.</li>
+                        <li><span className="font-semibold text-gray-900">Plazo extendido:</span> A 120 días (aplica un interés del 4% sobre el total).</li>
                       </ul>
-                    </div>
-
-                    <div className="w-full sm:w-1/2 max-w-sm ml-auto">
-                      <div className="flex justify-between py-2 text-sm text-gray-600">
-                        <span>Subtotal Equipos</span>
-                        <span>{formatCurrency(subtotal)}</span>
-                      </div>
-                      <div className="flex justify-between py-2 text-sm text-gray-600">
-                        <span>IVA ({(proposalData.taxRate * 100).toFixed(1)}%)</span>
-                        <span>{formatCurrency(taxes)}</span>
-                      </div>
-                      <div className="flex justify-between py-3 border-t-2 border-emerald-800 mt-1 bg-emerald-50 px-3 rounded-sm print:bg-transparent">
-                        <span className="text-lg font-black text-emerald-900 uppercase">Total Final</span>
-                        <span className="text-lg font-black text-emerald-900">{formatCurrency(total)}</span>
-                      </div>
                     </div>
                   </div>
 
                   <div className="border-t-2 border-gray-100 pt-6 mt-8 text-xs text-gray-500">
-                    <h4 className="font-bold text-gray-700 mb-2 uppercase tracking-wider">Condiciones Generales</h4>
+                    <h4 className="font-bold text-gray-700 mb-2 uppercase tracking-wider">Nota Comercial</h4>
                     <ul className="list-disc list-inside space-y-1.5 columns-1 sm:columns-2">
-                      <li>Valores expresados en pesos argentinos (ARS), más IVA.</li>
-                      <li>Oferta sujeta a disponibilidad de stock en el momento de la confirmación.</li>
-                      <li>La confirmación del pedido permite coordinar entrega.</li>
+                      <li>Los valores, cantidades y financiación detallada se enviarán en el presupuesto adjunto.</li>
+                      <li>Equipos sujetos a disponibilidad de stock al momento de la confirmación.</li>
+                      <li>La confirmación permite coordinar entrega y puesta en marcha.</li>
                       <li><strong>Incluye:</strong> Acompañamiento técnico y capacitación por parte de Agroconsulta.</li>
                     </ul>
                     <p className="mt-6 text-center italic font-medium text-emerald-800/80">
