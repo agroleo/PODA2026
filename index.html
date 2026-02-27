@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Download, Building2, MapPin, Phone, Mail, FileText, CheckCircle2 } from 'lucide-react';
+import { Download, Building2, MapPin, Phone, Mail, FileText, CheckCircle } from 'lucide-react';
 
 export default function App() {
   // Estado para los datos de la propuesta cargados con tu contenido
   const [proposalData, setProposalData] = useState({
     company: {
       name: "Agroconsulta",
+      representative: "Leandro Javier Garcia",
       address: "San Juan",
       city: "San Juan, Argentina",
-      phone: "+54 9 264 000 0000",
-      email: "contacto@agroconsulta.com"
+      phone: "+54 9 351 517-3310",
+      email: "garciaejarquel@gmail.com"
     },
     client: {
       name: "Productor / Empresa Agrícola",
@@ -93,9 +94,11 @@ export default function App() {
                 <Building2 size={36} />
                 <h2 className="text-4xl font-black tracking-tighter uppercase">{proposalData.company.name}</h2>
               </div>
-              <div className="text-sm text-gray-600 flex gap-4">
-                <span className="flex items-center gap-1"><MapPin size={14}/> {proposalData.company.city}</span>
+              <div className="text-sm text-gray-600 flex flex-wrap gap-x-4 gap-y-2 mt-1">
+                <span className="flex items-center gap-1 font-bold text-emerald-900">{proposalData.company.representative}</span>
                 <span className="flex items-center gap-1"><Phone size={14}/> {proposalData.company.phone}</span>
+                <span className="flex items-center gap-1"><Mail size={14}/> {proposalData.company.email}</span>
+                <span className="flex items-center gap-1"><MapPin size={14}/> {proposalData.company.city}</span>
               </div>
             </div>
             <div className="text-right">
@@ -110,6 +113,14 @@ export default function App() {
             <h2 className="text-2xl font-bold text-gray-900">{proposalData.details.title}</h2>
             <h3 className="text-lg text-emerald-700 font-medium">{proposalData.details.campaign}</h3>
             <p className="text-sm text-gray-500 mt-1">Tecnología Profesional para Frutales</p>
+          </div>
+
+          {/* Datos del Cliente */}
+          <div className="mb-8 bg-slate-50 p-6 rounded-lg print:bg-white print:border print:p-4">
+            <h3 className="text-xs font-bold uppercase text-emerald-600 mb-2 tracking-wider">Preparado para:</h3>
+            <p className="text-xl font-bold text-gray-900">{proposalData.client.name}</p>
+            <p className="text-sm text-gray-700 font-medium mt-1">Atte: {proposalData.client.contact}</p>
+            <p className="text-sm text-gray-500 mt-1">{proposalData.client.address} | {proposalData.client.email}</p>
           </div>
 
           {/* Contenido Estratégico */}
@@ -134,23 +145,23 @@ export default function App() {
               <h4 className="font-bold text-emerald-800 uppercase mb-2 border-b border-emerald-100 pb-1">2. Beneficios e Impacto</h4>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Cortes limpios</strong> en madera dura y mayor velocidad.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Menor desgaste físico</strong> en cortes de gran diámetro.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Reducción de riesgos</strong> por accidentes en altura.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
                   <span>Mejora en la arquitectura y manejo productivo del árbol.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
                   <span>Integración a un esquema de Buenas Prácticas Agrícolas.</span>
                 </li>
               </ul>
